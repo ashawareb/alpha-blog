@@ -1,0 +1,30 @@
+<style>
+    .user-data {
+        font-weight: bolder;
+        height: fit-content;
+        width: 75%;
+        margin: auto;
+    }
+</style>
+<h1 align="center" style="font-weight: bolder">
+  All Alpha-bloggers
+</h1>
+<br>
+<hr>
+<div style="width: fit-content;margin: auto;">
+  <%= will_paginate @users %>
+</div>
+<% @users.each do |user| %>
+  <ul style="list-style: none">
+    <div class="center jumbotron user-data">
+      <li align="left"><%= link_to gravatar_for(user), user_path(user) %></li>
+      <li align="left"><%= link_to user.username, user_path(user) %></li>
+      <li align="left"><small><%= pluralize(user.articles.count, "articles") %></small></li>
+    </div>
+  </ul>
+  <hr>
+<% end %>
+<br>
+<div style="width: fit-content;margin: auto;">
+  <%= will_paginate @users %>
+</div>

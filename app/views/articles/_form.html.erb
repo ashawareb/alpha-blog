@@ -1,0 +1,40 @@
+<!-- if there is any errors while creating the article it will appear here -->
+<% if @article.errors.any? %>
+  <div class="col-xs-12">
+    <div class="card text-white bg-danger mb-3">
+      <div class="card-header" style="font-weight: bolder">Error while creating the article</div>
+      <div class="card-body">
+        <h5 class="card-title" style="font-weight: bolder">The following error has appeared:</h5>
+        <ul>
+          <% @article.errors.full_messages.each do |msg| %>
+            <li style="font-weight: bolder"><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<!-- our creating article form but with rails helpers -->
+
+<div class="col-xs-12">
+  <%= form_for @article do |f| %>
+    <div class="form-group">
+      <%= f.label :title, style: "font-weight: bolder; font-size: large;" %>
+      <%= f.text_field :title, class: "form-control", placeholder: "Title of article", autofocus: true %>
+    </div>
+    <div class="form-group">
+      <%= f.label :description, style: "font-weight: bolder; font-size: large;" %>
+      <%= f.text_area :description, rows: 15, class: "form-control", placeholder: "The article", autofocus: true %>
+    </div>
+    <div class="form-group">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  <%= link_to "Back to Articles", articles_path %>
+</div>
+
+
+
+
+

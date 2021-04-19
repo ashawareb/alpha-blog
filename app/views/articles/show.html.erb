@@ -1,0 +1,21 @@
+<h2 align="center" style="font-weight: bolder"><%= @article.title %></h2>
+<div class="col-md-12 col-md-offset-2">
+  <hr>
+  <div class="center jumbotron" style="overflow: scroll;">
+    <p align="left" style="font-weight: bolder">
+      Created by: <%= link_to @article.user.username, user_path(@article.user) if @article.user %>
+      <br><small><%= time_ago_in_words(@article.created_at) %> ago</small>
+    </p>
+    <hr>
+    <p align="left" style="font-weight: bold"><%= @article.description %></p>
+  </div>
+  <%= link_to "View all Articles", articles_path, class: "btn btn-primary" %>
+  <% if logged_in? && (@article.user == current_user || current_user.admin?) %>
+    <%= link_to "Edit this article", edit_article_path(@article), class: "btn btn-success" %>
+    <%= link_to "Delete this article", article_path(@article), method: :delete,
+                data: { confirm: "Are you sure?" },
+                class: "btn btn-danger" %>
+  <% end %>
+</div>
+
+

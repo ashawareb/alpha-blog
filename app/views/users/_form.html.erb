@@ -1,0 +1,43 @@
+<!-- if there is any errors while creating the article it will appear here -->
+<% if @user.errors.any? %>
+  <div class="col-xs-12">
+    <div class="card text-white bg-danger mb-3">
+      <div class="card-header" style="font-weight: bolder">Error while creating the article</div>
+      <div class="card-body">
+        <h5 class="card-title" style="font-weight: bolder">The following error has appeared:</h5>
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li style="font-weight: bolder"><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<!-- our creating article form but with rails helpers -->
+
+<div class="col-xs-12">
+  <%= form_for @user do |f| %>
+    <div class="form-group">
+      <%= f.label :Username, style: "font-weight: bolder; font-size: large;" %>
+      <%= f.text_field :username, class: "form-control", placeholder: "Enter username", autofocus: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :Email, style: "font-weight: bolder; font-size: large;" %>
+      <%= f.email_field :email, class: "form-control", placeholder: "Enter email", autofocus: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :Password, style: "font-weight: bolder; font-size: large;" %>
+      <%= f.password_field :password, class: "form-control", placeholder: "Enter password", autofocus: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit(@user.new_record? ? "Sign up" : "Update information",
+                   class: "btn btn-primary") %>
+    </div>
+  <% end %>
+  <%= link_to "Back to Articles", articles_path %>
+</div>

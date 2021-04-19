@@ -1,0 +1,21 @@
+<% obj.each do |article| %>
+  <div class="col-md-12 col-md-offset-2">
+    <div class="center jumbotron" style="height: 200px; text-align: left; overflow: scroll;">
+      <div class="article-title" style="margin-top: -50px; font-weight: bolder; font-size: large">
+        <%= link_to article.title, article_path(article) %>
+      </div>
+      <hr>
+      <div class="article-body" style="font-weight: bold;">
+
+        <small style="font-weight: bold">
+          Created by: <%= article.user.username if article.user %>
+          <br>
+          <%= time_ago_in_words(article.created_at) %> ago
+        </small>
+        <br>
+        <hr>
+        <%= truncate(article.description, length: 200) %>
+      </div>
+    </div>
+  </div>
+<% end %>
