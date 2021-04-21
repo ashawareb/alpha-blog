@@ -1,0 +1,33 @@
+<h1 align="center" style="font-weight: bolder">Create new category</h1>
+<!-- if there is any errors while creating the article it will appear here -->
+<% if @category.errors.any? %>
+  <div class="col-xs-12">
+    <div class="card text-white bg-danger mb-3">
+      <div class="card-header" style="font-weight: bolder">Error while performing the action</div>
+      <div class="card-body">
+        <h5 class="card-title" style="font-weight: bolder">The following error has appeared:</h5>
+        <ul>
+          <% @category.errors.full_messages.each do |msg| %>
+            <li style="font-weight: bolder"><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<!-- our creating article form but with rails helpers -->
+
+<div class="col-xs-12">
+  <%= form_for @category do |f| %>
+    <div class="form-group">
+      <%= f.label :name, style: "font-weight: bolder; font-size: large;" %>
+      <%= f.text_field :name, class: "form-control", placeholder: "Enter name", autofocus: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  <%= link_to "Back to Articles", articles_path %>
+</div>

@@ -8,6 +8,7 @@ gem 'bootstrap-will_paginate'
 gem 'will_paginate', '~> 3.3.0'
 gem 'will_paginate-bootstrap4'
 gem 'rexml', '~> 3.2', '>= 3.2.4'
+gem 'rails-controller-testing'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.1'

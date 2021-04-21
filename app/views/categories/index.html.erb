@@ -1,0 +1,21 @@
+<style>
+    .category-data {
+        font-weight: bolder;
+        height: auto;
+        width: fit-content;
+        margin: auto;
+        border-radius: 7px;
+        background-color: #CCCCCC;
+    }
+</style>
+<h1 align="center" style="font-weight: bolder">All categories</h1>
+<hr>
+<% @categories.each do |category| %>
+  <ul style="list-style: none">
+    <div class="center category-data">
+      <li>
+        <%= link_to "#{category.name}", category_path(category) %>
+      </li>
+    </div>
+  </ul>
+<% end %>
