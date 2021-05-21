@@ -9,6 +9,7 @@
     }
 </style>
 <h1 align="center" style="font-weight: bolder">All categories</h1>
+<div style="width: fit-content;margin: auto;" aliign="center"><%= will_paginate %></div>
 <hr>
 <% @categories.each do |category| %>
   <ul style="list-style: none">
@@ -19,3 +20,4 @@
     </div>
   </ul>
 <% end %>
+<div style="width: fit-content;margin: auto;" align="center"><%= will_paginate %></div>
